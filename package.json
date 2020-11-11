@@ -1,0 +1,33 @@
+{
+  "name": "sql_to_eloquent",
+  "version": "1.0.0",
+  "description": "\"# sql_to_eloquent\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aoaoaoaoaoaoaoi/sql_to_eloquent.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aoaoaoaoaoaoaoi/sql_to_eloquent/issues"
+  },
+  "homepage": "https://github.com/aoaoaoaoaoaoaoi/sql_to_eloquent#readme",
+  "dependencies": {
+    "@vue/cli": "^4.5.8",
+    "typescript": "^4.0.5"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
+    "eslint": "^7.13.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-vue": "^7.1.0",
+    "prettier": "^2.1.2"
+  }
+}
