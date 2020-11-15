@@ -1,3 +1,8 @@
+function isSelect(value: string) : boolean
+{
+  return value.substr(0, 7) === "select ";
+}
+
 function conversion(value: string) : void
 {
   let nest = 0;
@@ -7,7 +12,7 @@ function conversion(value: string) : void
     let current = value[i];
 
     sql[nest] += current;
-    if(value[i] == '('){
+    if(isSelect(value.substr(i))){
       ++nest;
     }
     else if(value[i] == ')'){
