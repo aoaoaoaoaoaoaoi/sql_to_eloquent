@@ -10,10 +10,18 @@ function conversion(value: string) : void
   let selectNest = [];
   let selectCount = 0;
   let sql: string[] = new Array();
+  let queryBuilder: string[] = new Array();
   for(var i = 0; i < value.length; ++i){
     let current = value[i];
+    let isAlias = false;
 
     if(isSelect(value.substr(i))){
+      i += 7;
+      for(){
+        queryBuilder
+      }
+      
+
       selectNest[selectCount] = nest;
       ++selectCount;
     }
@@ -22,8 +30,8 @@ function conversion(value: string) : void
     }
     else if(value[i] == ')'){
       --nest;
-      if(selectNest[selectCount] == nest){
-        //別名
+      if(selectNest[selectCount] == nest + 1){
+        isAlias = true;
       }
     }
     sql[selectCount] += current;
