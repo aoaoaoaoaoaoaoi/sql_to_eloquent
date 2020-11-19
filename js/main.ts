@@ -7,7 +7,7 @@ function conversion(value: string) : void
 {
   let nest = 0;
   let beforeChar = '';
-  let selectNest = [];
+  let selectNest: number[] = new Array();
   let selectCount = 0;
   let sql: string[] = new Array();
   let queryBuilder: string[] = new Array();
@@ -17,7 +17,7 @@ function conversion(value: string) : void
 
     if(isSelect(value.substr(i))){
       i += 7;
-      for(){
+      for(var j = i; j < value.length; ++j){
         queryBuilder
       }
       
