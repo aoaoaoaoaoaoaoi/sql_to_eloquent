@@ -47,7 +47,7 @@ function conversion(value: string) : void
       }
       
 
-      selectNest[selectCount] = nest;
+      /*selectNest[selectCount] = nest;
       ++selectCount;
     }
     else if(value[i] == '('){
@@ -60,6 +60,6 @@ function conversion(value: string) : void
       }
     }
     sql[selectCount] += current;
-    beforeChar = current;
+    beforeChar = current;*/
   }
 }
