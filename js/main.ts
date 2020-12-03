@@ -18,6 +18,9 @@ function getAggregateStr(value: string) : string
   || value.substr(0, 3) === "avg"
   || value.substr(0, 3) === "sum"
   ){
+    if (value.indexOf("(") == -1) {
+      return "->" + value + "()";
+    }
     return "->" + value;
   }
   return "";
@@ -43,7 +46,7 @@ function conversion(value: string) : void
       let n = nest.split("as");
       if(selectNest.length == 1 && n.length == 1){
         let s = selectNest[0].replace(/\s+/g, "");
-
+        seletStr = getAggregateStr(s);
       }
     });
   });
