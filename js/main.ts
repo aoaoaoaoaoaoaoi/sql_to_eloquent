@@ -8,6 +8,21 @@ function isFrom(value: string) : boolean
   return value.substr(0, 5) === "from ";
 }
 
+function getAggregateStr(value: string) : string
+{
+  if(value.substr(0, 1) === "*"){
+    return "->get();";
+  }else if(value.substr(0, 3) === "min"
+  || value.substr(0, 3) === "max"
+  || value.substr(0, 5) === "count"
+  || value.substr(0, 3) === "avg"
+  || value.substr(0, 3) === "sum"
+  ){
+    return "->" + value;
+  }
+  return "";
+}
+
 function conversion(value: string) : void
 {
   let nest = 0;
@@ -17,49 +32,21 @@ function conversion(value: string) : void
   let sql: string[] = new Array();
   let queryBuilder: string[] = new Array();
   let queryBuilderStr = "";
-  for(var i = 0; i < value.length; ++i){
-    let current = value[i];
-    let isAlias = false;
 
-    if(isSelect(value.substr(i))){
-      i += 7;
-      for(; i < value.length; ++i){
-        if(isFrom(value.substr(i))){
-          i += 5;
-          let from = "";
-          let isBig = true;
-          for(; i < value.length; ++i){
-            if(value[i] == ''){
-              continue;
-            }else if(value[i] == '_'){
-              isBig = true;
-            }
-            else if(isBig){
-              from += value[i].toUpperCase();
-              isBig = false;
-            }else{
-              from += value[i];
-            }
-          }
-          queryBuilderStr += from;
-        }
-        queryBuilderStr += "->get();"
-      }
-      
+  let seletStr = "";
 
-      /*selectNest[selectCount] = nest;
-      ++selectCount;
-    }
-    else if(value[i] == '('){
-      ++nest;
-    }
-    else if(value[i] == ')'){
-      --nest;
-      if(selectNest[selectCount] == nest + 1){
-        isAlias = true;
+  let selects = value.split(/([select]+)/);
+  selects.forEach(select =>{
+    let from = select.split(/([from]+)/);
+    let selectNest = from[0].split(/([,]+)/);
+    selectNest.forEach(nest =>{
+      let n = nest.split("as");
+      if(selectNest.length == 1 && n.length == 1){
+        let s = selectNest[0].replace(/\s+/g, "");
+
       }
-    }
-    sql[selectCount] += current;
-    beforeChar = current;*/
+    });
+  });
+
   }
 }
